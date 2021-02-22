@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  log4netlogstoelasticsearch:
+    image: ${DOCKER_REGISTRY-}log4netlogstoelasticsearch
+    build:
+      context: .
+      dockerfile: log4netLogsToElasticsearch/Dockerfile

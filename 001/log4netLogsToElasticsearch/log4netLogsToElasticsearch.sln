@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.808.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "log4netLogsToElasticsearch", "log4netLogsToElasticsearch\log4netLogsToElasticsearch.csproj", "{9C1483B1-D4D1-4680-B511-13325D20E6BA}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{12CA4A18-159D-4B83-9068-B7760BE01BDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C1483B1-D4D1-4680-B511-13325D20E6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1483B1-D4D1-4680-B511-13325D20E6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1483B1-D4D1-4680-B511-13325D20E6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1483B1-D4D1-4680-B511-13325D20E6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12CA4A18-159D-4B83-9068-B7760BE01BDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CA4A18-159D-4B83-9068-B7760BE01BDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CA4A18-159D-4B83-9068-B7760BE01BDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CA4A18-159D-4B83-9068-B7760BE01BDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D743AD1-F639-4845-AE85-156AF9423260}
+	EndGlobalSection
+EndGlobal
