@@ -3,3 +3,4 @@ Contains different code projects in C#, Docker, Elasticsearch, .NET and many mor
 
 ## Blog articles
 * [log4net logs to Elasticsearch](https://www.google.com)
+* [log4net logs to Elasticsearch - Part 2](https://www.google.com)
