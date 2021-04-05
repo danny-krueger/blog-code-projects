@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using OsmApi.Entities;
 using RestSharp;
+using SharedLib.Entities.OsmApi;
 
 namespace OsmApi.Api
 {

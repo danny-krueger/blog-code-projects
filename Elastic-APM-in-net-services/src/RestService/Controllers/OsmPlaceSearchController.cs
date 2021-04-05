@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OsmApi.Api;
-using OsmApi.Entities;
+using SharedLib.Entities;
+using SharedLib.Helpers;
 
 namespace RestService.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class OsmPlaceSearchController : ControllerBase
+    public class PlaceSearchController : ControllerBase
     {
-        private readonly ILogger<OsmPlaceSearchController> logger;
+        private readonly ILogger<PlaceSearchController> logger;
         private readonly INominatimOsmApi nominatimOsmApi;
 
-        public OsmPlaceSearchController(ILogger<OsmPlaceSearchController> logger, 
+        public PlaceSearchController(ILogger<PlaceSearchController> logger, 
             INominatimOsmApi nominatimOsmApi)
         {
             this.logger = logger;
@@ -24,9 +23,16 @@ namespace RestService.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<OsmPlace> SearchOsmPlaces(string query, int limit = 10)
+        public IList<Place> SearchPlaces(string query, int limit = 10)
         {
-            return nominatimOsmApi.SearchOsmPlaces(query, limit);
+            logger.LogInformation($"Search places with query '{query}'.");
+
+            IList<Place> places = nominatimOsmApi.SearchOsmPlaces(query, limit)?
+                .Select(s => PlaceOsmPlaceMapper.Map(s))
+                .ToList();
+            logger.LogInformation($"Found {places?.Count} places.");
+            
+            return places;
         }
     }
 }

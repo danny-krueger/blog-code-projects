@@ -1,6 +1,6 @@
-namespace OsmApi.Entities
+namespace SharedLib.Entities.OsmApi
 {
-    public class Address
+    public class OsmAddress
     {
         public string Road { get; set; }
         public string HouseNumber { get; set; }
