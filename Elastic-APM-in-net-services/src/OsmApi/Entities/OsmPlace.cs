@@ -1,4 +1,4 @@
-﻿namespace SharedLib.Entities.OsmApi
+﻿namespace OsmApi.Entities
 {
     public class OsmPlace
     {

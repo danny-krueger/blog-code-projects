@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using SharedLib.Entities.OsmApi;
+using OsmApi.Entities;
 
 namespace OsmApi.Api
 {

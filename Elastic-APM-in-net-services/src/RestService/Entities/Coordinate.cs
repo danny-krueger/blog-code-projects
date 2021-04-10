@@ -1,4 +1,4 @@
-namespace SharedLib.Entities
+namespace RestService.Entities
 {
     public class Coordinate
     {

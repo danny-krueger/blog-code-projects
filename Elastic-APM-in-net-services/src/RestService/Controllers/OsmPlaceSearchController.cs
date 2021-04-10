@@ -3,8 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using OsmApi.Api;
-using SharedLib.Entities;
-using SharedLib.Helpers;
+using RestService.Entities;
 
 namespace RestService.Controllers
 {
@@ -28,7 +27,7 @@ namespace RestService.Controllers
             logger.LogInformation($"Search places with query '{query}'.");
 
             IList<Place> places = nominatimOsmApi.SearchOsmPlaces(query, limit)?
-                .Select(s => PlaceOsmPlaceMapper.Map(s))
+                .Select(s => new Place(s))
                 .ToList();
             logger.LogInformation($"Found {places?.Count} places.");
             

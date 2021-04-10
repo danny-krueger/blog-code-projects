@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using OsmApi.Api;
-using SharedLib.Entities.OsmApi;
+using OsmApi.Entities;
 
 namespace OsmApi.Tests.Api
 {
