@@ -1,11 +1,17 @@
+using System;
+using DatabaseRepository;
+using DatabaseRepository.EfCore;
+using DatabaseRepository.Repositories;
 using Elastic.Apm.NetCoreAll;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using OsmApi.Api;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace RestService
 {
@@ -22,6 +28,20 @@ namespace RestService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<INominatimOsmApi, NominatimOsmApi>();
+            services.AddTransient<IPlaceRepository, PlaceRepository>();
+            
+            services.AddDbContextPool<PlaceContext>(
+                dbContextOptions => dbContextOptions
+                    .UseMySql(
+                        "server=localhost;user=root;password=root_pw;database=places",
+                        new MySqlServerVersion(new Version(10, 5, 9)),
+                        mySqlOptions => mySqlOptions
+                            .CharSetBehavior(CharSetBehavior.NeverAppend))
+                    // Everything from this point on is optional but helps with debugging.
+                    .EnableSensitiveDataLogging()
+                    .EnableDetailedErrors()
+            );
+
                 
             services.AddControllers();
             services.AddSwaggerGen(c =>

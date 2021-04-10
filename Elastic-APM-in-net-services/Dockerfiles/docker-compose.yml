@@ -66,8 +66,22 @@ services:
       retries: 20
       test: curl --write-out 'HTTP %{http_code}' --fail --silent --output /dev/null http://localhost:5601/api/status
 
+  mariadb:
+    image: mariadb:10.5.9
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root_pw'
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - mariadb_conf:/etc/mysql
+
 volumes:
   esdata:
+    driver: local
+  mariadb_data:
+    driver: local
+  mariadb_conf:
     driver: local
 
 networks:
