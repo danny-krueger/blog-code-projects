@@ -3,6 +3,7 @@ using DatabaseRepository;
 using DatabaseRepository.EfCore;
 using DatabaseRepository.Repositories;
 using Elastic.Apm.NetCoreAll;
+using ElasticsearchRepository.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,7 @@ namespace RestService
         {
             services.AddTransient<INominatimOsmApi, NominatimOsmApi>();
             services.AddTransient<IPlaceRepository, PlaceRepository>();
+            services.AddTransient<IPlaceEsRepository>(foo => new PlaceEsRepository("http://localhost:9200/"));
             
             services.AddDbContextPool<PlaceContext>(
                 dbContextOptions => dbContextOptions
@@ -41,8 +43,7 @@ namespace RestService
                     .EnableSensitiveDataLogging()
                     .EnableDetailedErrors()
             );
-
-                
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -51,10 +52,16 @@ namespace RestService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
         {
             app.UseAllElasticApm(Configuration);
-            
+
+            IPlaceEsRepository placeEsRepository = serviceProvider.GetService<IPlaceEsRepository>();
+            if (placeEsRepository != null)
+            {
+                placeEsRepository.CreateIndexIfNotExists();
+            }
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

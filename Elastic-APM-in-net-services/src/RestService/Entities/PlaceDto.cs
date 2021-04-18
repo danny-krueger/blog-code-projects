@@ -1,4 +1,5 @@
 using DatabaseRepository.EfCore;
+using ElasticsearchRepository.Entities;
 using OsmApi.Entities;
 
 namespace RestService.Entities
@@ -8,7 +9,7 @@ namespace RestService.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string DisplayName { get; set; }
-        public AddressDTo Address { get; set; }
+        public AddressDto Address { get; set; }
         public CoordinateDto Coordinate { get; set; }
 
         public PlaceDto(OsmPlace osmPlace)
@@ -22,7 +23,7 @@ namespace RestService.Entities
 
             if (osmPlace.Address != null)
             {
-                Address = new AddressDTo(osmPlace.Address);
+                Address = new AddressDto(osmPlace.Address);
             }
         }
         
@@ -37,7 +38,22 @@ namespace RestService.Entities
 
             if (place.Address != null)
             {
-                Address = new AddressDTo(place.Address);
+                Address = new AddressDto(place.Address);
+            }
+        }
+        
+        public PlaceDto(PlaceEs place)
+        {
+            Id = place.Id;
+            Name = place.Name;
+            DisplayName = place.DisplayName;
+            Coordinate = place.Coordinate != null
+                ? new CoordinateDto(place.Coordinate.Lat, place.Coordinate.Lon)
+                : null;
+
+            if (place.Address != null)
+            {
+                Address = new AddressDto(place.Address);
             }
         }
     }

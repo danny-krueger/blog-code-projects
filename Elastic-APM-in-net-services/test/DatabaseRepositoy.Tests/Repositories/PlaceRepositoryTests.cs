@@ -4,7 +4,7 @@ using DatabaseRepository.Repositories;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 
-namespace DatabaseRepositoy.Tests
+namespace DatabaseRepositoy.Tests.Repositories
 {
     [TestFixture]
     public class PlaceRepositoryTests

@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DatabaseRepository\DatabaseRepository.csproj" />
+    <ProjectReference Include="..\ElasticsearchRepository\ElasticsearchRepository.csproj" />
     <ProjectReference Include="..\OsmApi\OsmApi.csproj" />
   </ItemGroup>
 

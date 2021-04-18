@@ -1,9 +1,10 @@
 using DatabaseRepository.EfCore;
+using ElasticsearchRepository.Entities;
 using OsmApi.Entities;
 
 namespace RestService.Entities
 {
-    public class AddressDTo
+    public class AddressDto
     {
         public string Street { get; set; }
         public string HouseNumber { get; set; }
@@ -11,7 +12,7 @@ namespace RestService.Entities
         public string City { get; set; }
         public string Country { get; set; }
 
-        public AddressDTo(OsmAddress osmAddress)
+        public AddressDto(OsmAddress osmAddress)
         {
             Street = osmAddress.Road;
             HouseNumber = osmAddress.HouseNumber;
@@ -20,7 +21,16 @@ namespace RestService.Entities
             Country = osmAddress.Country;
         }
         
-        public AddressDTo(Address address)
+        public AddressDto(Address address)
+        {
+            Street = address.Street;
+            HouseNumber = address.HouseNumber;
+            Zip = address.Zip;
+            City = address.City;
+            Country = address.Country;
+        }
+        
+        public AddressDto(AddressEs address)
         {
             Street = address.Street;
             HouseNumber = address.HouseNumber;
