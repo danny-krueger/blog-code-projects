@@ -3,4 +3,5 @@ Contains different code projects in C#, Docker, Elasticsearch, .NET and many mor
 
 # Blog articles
 * [log4net logs to Elasticsearch - Part 1](https://dannykrueger.dev/log4net-logs-to-elasticsearch-part-1)
-* [log4net logs to Elasticsearch - Part 2 (in progress)](https://dannykrueger.dev/)
+* [log4net logs to Elasticsearch - Part 2](https://dannykrueger.dev/log4net-logs-to-elasticsearch-part-2)
+* [Monitoring with Elastic APM .NET for a .NET Core REST service - Part 1](https://dannykrueger.dev/monitoring-with-elastic-apm-net-for-a-net-core-rest-service-part-1)
